@@ -1,0 +1,26 @@
+<html>
+<head>
+  <title>Jester Selector</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src ="/static/client.js"></script>
+</head>
+<body>
+  <div id = "gameContainer">
+  <div id = "submitForm">
+  <h1>Please choose your role from the dropdown!</h1>
+    <label>Name:</label>
+    <input type = "text" id = "username" name = "username" placeholder="Enter a username..." autocomplete="off"></br>
+    <label>Role:</label>
+    <select id = "role" name = "roles" >
+      <option value = "crewmate">Crewmate</option>
+      <option value = "imposter">Imposter</option>
+    </select>
+    <br>
+    <label>Room Code: </label>
+    <input type = "text" id = "lobbyCode" name = "lobbyCode" placeholder = "Please enter a room code..." autocomplete="off"></br>
+    <button onclick="submitInfo({'roomcode': document.getElementById('lobbyCode').value,'role': document.getElementById('role').value,'username': document.getElementById('username').value})">Submit</button>
+  </div>
+</div>
+</body>
+
+</html>
