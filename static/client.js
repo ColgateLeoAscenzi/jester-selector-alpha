@@ -32,9 +32,13 @@ socket.on("you-are-host", (amHost) => {
   infoContainer.appendChild(readyWrapper);
 });
 
-socket.on("game-started", (role) => {
-  console.log("I am", role);
-  myRole = role;
+socket.on("game-started", (playerServerInfo) => {
+  for (var i = 0; i < playerServerInfo.length; i++) {
+    if (playerServerInfo[i].name == myName) {
+      myRole = playerServerInfo[i].role;
+    }
+  }
+  console.log("I am", myRole);
   const gameContainer = document.getElementById("gameContainer");
   const infoContainer = document.getElementById("infoContainer");
   gameContainer.removeChild(infoContainer);

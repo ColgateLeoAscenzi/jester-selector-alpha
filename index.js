@@ -80,16 +80,11 @@ io.on("connection", (socket) => {
     console.log("Jester is: ", jesterName);
 
     //tell people
-    console.log(rooms[data.roomcode].playerServerInfo);
     for (var i = 0; i < rooms[data.roomcode].playerServerInfo.length; i++) {
       if (data.name == rooms[data.roomcode].playerServerInfo[i].name) {
         if (data.name == jesterName) {
-          socket.emit("game-started", "jester");
-        } else {
-          socket.emit(
-            "game-started",
-            rooms[data.roomcode].playerServerInfo[i].role
-          );
+          rooms[data.roomcode].playerServerInfo[i].role = "jester";
+          io.sockets.emit("game-started", playerServerInfo);
         }
       }
     }
