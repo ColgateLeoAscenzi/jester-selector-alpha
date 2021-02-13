@@ -70,8 +70,8 @@ io.on("connection", (socket) => {
   });
 
   socket.on("game-ready", (data) => {
-    console.log("Starting game with players: ");
-    console.log(rooms[data.roomcode]);
+    // console.log("Starting game with players: ");
+    // console.log(rooms[data.roomcode]);
     //select jester
     let jesterName =
       rooms[data.roomcode].crewmateNames[
@@ -81,13 +81,13 @@ io.on("connection", (socket) => {
 
     //tell people
     for (var i = 0; i < rooms[data.roomcode].playerServerInfo.length; i++) {
-      if (data.name == rooms[data.roomcode].playerServerInfo[i].name) {
-        if (data.name == jesterName) {
-          rooms[data.roomcode].playerServerInfo[i].role = "jester";
-          io.sockets.emit("game-started", playerServerInfo);
-        }
+      if (jesterName == rooms[data.roomcode].playerServerInfo[i].name) {
+        rooms[data.roomcode].playerServerInfo[i].role = "jester";
       }
     }
+
+    console.log(rooms[data.roomcode].playerServerInfo);
+    io.sockets.emit("game-started", rooms[data.roomcode].playerServerInfo);
 
     //destroy room
     rooms[data.roomcode] = undefined;

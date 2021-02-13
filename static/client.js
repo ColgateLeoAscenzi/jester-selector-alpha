@@ -33,6 +33,7 @@ socket.on("you-are-host", (amHost) => {
 });
 
 socket.on("game-started", (playerServerInfo) => {
+  console.log("here");
   for (var i = 0; i < playerServerInfo.length; i++) {
     if (playerServerInfo[i].name == myName) {
       myRole = playerServerInfo[i].role;
