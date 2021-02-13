@@ -61,8 +61,9 @@ const transitionGame = () => {
   gameContainer.removeChild(submitForm);
 
   let infoContainer = document.createElement("div");
+  infoContainer.id = "infoContainer";
   infoContainer.innerHTML =
-    "<div id = 'infoContainer'><h1 id = 'titlebar'>Waiting on Host: </h1></br><div id = 'playerList'>Empty</div></div>";
+    "<h1 id = 'titlebar'>Waiting on Host: </h1></br><div id = 'playerList'>Empty</div>";
   gameContainer.appendChild(infoContainer);
 };
 
